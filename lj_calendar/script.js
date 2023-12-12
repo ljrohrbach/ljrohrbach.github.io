@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const calendarData = generateICal(checkedItems, selectedData);
       downloadICal(calendarData);
     } else {
-      alert('Bitte wähle mindestens einen Eintrag aus, bevor du "Herunterladen" klickst..');
+      alert('Bitte wähle mindestens einen Eintrag aus, bevor du "Herunterladen" klickst.');
     }
   });
 
