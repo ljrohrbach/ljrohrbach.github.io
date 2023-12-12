@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const checklist = document.getElementById('checklist');
   const downloadBtn = document.getElementById('downloadBtn');
+  const selectAllBtn = document.getElementById('selectAllBtn');
 
   // Sort checklist items by date
   events.sort((a, b) => {
@@ -19,10 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
   events.forEach((item, index) => {
     const listItem = document.createElement('li');
     if (typeof item.endDate === 'undefined')
-      listItem.innerHTML = `<input type="checkbox" data-index="${index}"> ${item.startDate}: ${item.title}`;
+      listItem.innerHTML = `<input type="checkbox" checked="true" data-index="${index}"> ${item.startDate}: ${item.title}`;
     else
-      listItem.innerHTML = `<input type="checkbox" data-index="${index}"> ${item.startDate} - ${item.endDate}: ${item.title}`;
+      listItem.innerHTML = `<input type="checkbox" checked="true" data-index="${index}"> ${item.startDate} - ${item.endDate}: ${item.title}`;
     checklist.appendChild(listItem);
+  });
+
+  selectAllBtn.addEventListener('click', function () {
+    const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+    const isAnyUnselected = Array.from(checkboxes).some(checkbox => !checkbox.checked);
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = isAnyUnselected;
+    });
+
+    selectAllBtn.textContent = !isAnyUnselected ? 'Alle auswählen' : 'Alle abwählen';
   });
 
   downloadBtn.addEventListener('click', function () {
