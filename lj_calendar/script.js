@@ -39,37 +39,28 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   function generateICal(selectedItems, selectedData) {
-    const calendarHeader = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\n';
+    const calendarHeader = `BEGIN:VCALENDAR
+VERSION:2.0
+`;
     const calendarFooter = 'END:VCALENDAR\r\n';
     let calendarBody = '';
 
     selectedItems.forEach(item => {
       const itemEntry = events[item.dataset.index];
       const startDate = formatDate(itemEntry.startDate);
-      
-      let event = '';
-      
-      console.log(itemEntry);
-      if (typeof itemEntry.endDate === 'undefined'){
-        event = `
+
+      const endTimeStr = itemEntry.endDate || itemEntry.startDate;
+      const endDate = formatAddDay(endTimeStr, 1);
+
+      const event = `
 BEGIN:VEVENT
 SUMMARY:${itemEntry.title}
-DTSTART:${startDate}
+DTSTART;VALUE=DATE:${startDate}
+DTEND;VALUE=DATE:${endDate}
 DESCRIPTION:${itemEntry.description || ""}
+TRANSP:TRANSPARENT
 END:VEVENT
 `;
-      } else {
-      const endDate = formatAddDay(itemEntry.endDate, 1);
-      console.log(endDate);
-            event = `
-BEGIN:VEVENT
-SUMMARY:${itemEntry.title}
-DTSTART:${startDate}
-DTEND:${endDate}
-DESCRIPTION:${itemEntry.description || ""}
-END:VEVENT
-`;
-      }
       calendarBody += event;
       });
 
