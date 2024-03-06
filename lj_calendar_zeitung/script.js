@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var descStr = item.description.length === 0 ? '' :  `<font color="grey">(${item.description})</font>`;
 
     if (typeof item.endDate === 'undefined' || item.endDate == item.startDate)
-      listItem.innerHTML = `<input type="checkbox" checked="true" data-index="${index}"> ${item.startDate}: ${titleStr} ${descStr}`;
+      listItem.innerHTML = `<label><input type="checkbox" checked="true" data-index="${index}"> ${item.startDate}: ${titleStr} ${descStr}</label>`;
     else
-      listItem.innerHTML = `<input type="checkbox" checked="true" data-index="${index}"> ${item.startDate} - ${item.endDate}: ${titleStr} ${descStr}`;
+      listItem.innerHTML = `<label><input type="checkbox" checked="true" data-index="${index}"> ${item.startDate} - ${item.endDate}: ${titleStr} ${descStr}</label>`;
     checklist.appendChild(listItem);
   });
 
