@@ -17,6 +17,7 @@ const events = [
   { title: 'Forstbewerb', startDate: '06.04.2025', description: 'Putzleinsdorf' },
   { title: 'Pralinenkurs', startDate: '09.04.2025', description: 'St. Johann' },
   { title: 'Fußball, Leichtatlethik & Warrior', startDate: '13.07.2025', description: 'Oepping-Peilstein' },
+  { title: 'eljot Fest', startDate: '26.07.2025', description: 'Ort im Innkreis' },
   { title: 'Freiluftkino', startDate: '07.08.2025', description: 'Arnreit' },
   { title: 'Pflügen', startDate: '10.08.2025', description: '' },
   { title: 'Bezirksherbsttagung', startDate: '11.10.2025', description: 'Oberschwarzenberg' },
